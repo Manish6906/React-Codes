@@ -10,11 +10,12 @@ export default function Alert(props) {
     }
   return (
 
-   
-    props.alert && <div className="container">
+   <div style={{height: "10px"}}>
+   { props.alert && <div className="container">
            <div className="alert alert-success alert-dismissible fade show" role="alert">
   <strong>{capitalize(props.alert.type)}</strong> {props.alert.msg}
 </div>
+</div>}
 </div>
   )
 }

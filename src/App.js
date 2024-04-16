@@ -1,19 +1,21 @@
 import { useState } from "react";
 import "./App.css";
-// import About from "./Components/About";
+import About from "./Components/About";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import Alert from "./Components/Alert";
+// import Bar from "./Components/Bar";
+
 // import Picture from './Components/Picture';
 
 // react rounter from react
 
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   // BrowserRouter,
-//   Routes,
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  // BrowserRouter,
+  Routes,
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -36,7 +38,7 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "#404040";
       showAlert("Dark mode has been Enabled", "sucess");
-      document.title = "rbu hy";
+      // document.title = "rbu hy";
 
       //   setInterval(()=>
       // {
@@ -50,28 +52,26 @@ function App() {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been Enabled", "sucess");
-      document.title = "rbu bye";
+      // document.title = "rbu bye";
     }
   };
   return (
     <>
-      {/* <Router> */}
-        <Navbar title="RBU" About="About" Hometitle="" toggle={toggle} mode={mode}/>
-        <Alert alert={alert}/>
-       
-        
+      <Router>
+        <Navbar title="Word Counter" About="About" Home="Home" toggle={toggle} mode={mode}/>
+        <Alert alert={alert} />
+        {/* <div className="container text-center">
+          <Bar />
+        </div> */}
         <div className="container my-5">
-      
-        {/* <Routes> */}
-          {/* <Route  exact path="/about" element={<About />} /> */}
+          <Routes>
+            <Route exact path="/about" element={<About mode={mode}/>} />
 
-          {/* <Route exact path="/" element={<TextForm heading="Enter the text" address="Address here" showAlert={showAlert} mode={mode}/>}/> */}
-         
-        {/* </Routes> */}
-        <TextForm heading="Enter the text" address="Address here"  showAlert={showAlert} mode={mode}/>
+            <Route exact path="/" element={<TextForm heading="Enter the text" address="Address here" showAlert={showAlert} mode={mode}/>}/>
+          </Routes>
+          {/* <TextForm heading="Enter the text"  address="Address here" showAlert={showAlert} mode={mode}/> */}
         </div>
-       
-      {/* </Router> */}
+      </Router>
     </>
   );
 }
